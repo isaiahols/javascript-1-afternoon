@@ -6,6 +6,10 @@
 //plus the value of the name parameter.
 
 //Code here
+function greeting(name) {
+  console.log("Hello, "+ name);
+  return "Hello, " + name;
+}
 
 //////////////////PROBLEM 2////////////////////
 
@@ -13,21 +17,27 @@
 //Name it newGreeting.
 
 //Code Here
-
+var newGreeting = function (name){
+  console.log("Hello, " + name);
+  return "Hello, " + name;
+};
 //////////////////PROBLEM 3////////////////////
 
 //Rewrite the function greeting as an arrow function.
 //Name it finalGreeting.
 
 //Code Here
-
+var finalGreeting =(name)=>{
+  console.log("Hello, " + name);
+  return "Hello, " + name;
+};
 //////////////////PROBLEM 4////////////////////
 
 //Create an array called groceries with the values
 //"apples", "milk", "eggs", "bread"
 
 //Code Here
-
+var groceries =['apples','milk','eggs','bread'];
 //Write a function called doubleCheck that takes in an array
 //as a parameter.
 
@@ -35,7 +45,17 @@
 //doubleCheck should return the array.
 
 //Code Here
-
+var doubleCheck=(arr)=>{
+  // let checker=false;
+  // groceries.forEach((val)=>{val==="chocolate"?checker=true:checker=false});
+  // if(checker){
+  //   groceries.push("chocolate");
+  // }
+  if(arr.indexOf("chocolate")===-1){
+    arr.push("chocolate");
+  }
+  return arr;
+}
 //////////////////PROBLEM 5////////////////////
 
 //Create an object saved to the variable dog.
@@ -44,21 +64,29 @@
 //and goodBoy (a boolean).
 
 //Code Here
-
+var dog ={
+  name: "Doggy",
+  color: "Brown",
+  age: 45,
+  goodBoy: false
+};
 //...access the dog's name from the object and assign it to a
 //variable called devMountainClassPet.
 
 //Code Here
-
+var devMountainClassPet= dog.name;
 //Add a method to dog called bark.
 //The value of bark should be a function that returns the string "Woof woof".
 
 //Code Here
-
+dog.bark=()=>{
+  console.log("we got here");
+  return "Woof woof";
+};
 //Store the result of invoking the bark method in a variable called ruff.
 
 //Code Here
-
+var ruff = dog.bark();
 //////////////////PROBLEM 6////////////////////
 
 //Write a function called looper that takes in an array. looper should declare
@@ -71,7 +99,25 @@
 //Return mySum.
 
 //Code Here
-
+// var looper=arr=>{
+//   var mySum =0;
+//   arr.map((val)=>{
+//     console.log(val);
+//     val>=100||val%2!=0?mySum+=val:console.log("Nope");
+//   })
+// }
+///Why did this not work? I know that .map returns a new array but I also tried forEach and Reduce but 
+///could not figure out how to make those work either.
+///I probably should have tried filter and then added the results from that to mySum
+var looper=(arr)=>{
+  var mySum=0
+  for(var i in arr){
+    if(arr[i]>=100||arr[i]%2!=0){
+      mySum+=arr[i];
+    }
+  }
+  return mySum;
+};
 //////////////////PROBLEM 7////////////////////
 
 //Given the following function called math
@@ -84,12 +130,14 @@ function math(num1, num2, callback) {
 //returns the result of adding them together.
 
 //Code Here
-
+var add =(num1, num2)=>{
+  return num1+num2;
+};
 //Now invoke math, passing in the numbers 3 and 4, and your add function,
 //storing the result in the variable mathSum.
 
 //Code Here
-
+mathSum=math(3,4,add);
 //////////////////PROBLEM 8////////////////////
 
 //Write a function called invoker that takes in one paramter, a callback function.
@@ -104,7 +152,9 @@ function sampleCallbackTwo() {
 }
 
 //Code Here
-
+var invoker=(something)=>{
+  return something();
+}
 //////////////////PROBLEM 9////////////////////
 
 let duck = "cute";
@@ -127,16 +177,16 @@ function pond() {
 //as strings.
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let globalScope = ["duck"];
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
-let bathroomScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let bathroomScope = ["duck", "rubberDuck"];
 
 //This array should contain the variable names (as strings) accessible in the bathtub function.
-let bathtubScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let bathtubScope = ["duck", "sailorDuck", "rubberDuck"];
 
 //This array should contain the variable names (as strings) accessible in the pond function.
-let pondScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let pondScope = ["duck", "realDuck"];
 
 //////////////////PROBLEM 10////////////////////
 
@@ -144,11 +194,16 @@ let pondScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
 //function which returns your name.
 
 //Code Here
-
+var outerFn =()=>{
+  return function(){
+    return "Isaiah Olson"
+  }
+};
 //Now save the result of invoking outerFn into a variable called innerFn.
 
 //Code Here
-
+var innerFn = outerFn();
 //Now invoke innerFn and save the result to a variable called finalResult.
 
 //Code Here
+var finalResult=innerFn();
